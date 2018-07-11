@@ -6,7 +6,7 @@ module.exports = function(res, fn){
     res.on('data', function(chunk){ res.text += chunk; });
     res.on('end', function(){
         try {
-            parseString(res.text.replace("\ufeff", ""), fn);
+            parseString(res.text.replace("\ufeff", "").toString('utf8'), fn);
         } catch (err) {
             fn(err);
         }
